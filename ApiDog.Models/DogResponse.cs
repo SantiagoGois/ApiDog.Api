@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ApiDog.Models
+﻿namespace ApiDog.Models
 {
 
     public class DogResponse

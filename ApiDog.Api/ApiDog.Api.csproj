@@ -5,7 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="RestEase" Version="1.6.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApiDog.Facades\ApiDog.Facades.csproj" />
+    <ProjectReference Include="..\ApiDog.Models\ApiDog.Models.csproj" />
+    <ProjectReference Include="..\ApiDog.Services\ApiDog.Services.csproj" />
   </ItemGroup>
 
 </Project>

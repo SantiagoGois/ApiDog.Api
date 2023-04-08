@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ApiDog.Models;
+using ApiDog.Services;
+using Microsoft.AspNetCore.Mvc;
+using RestEase;
+using System.Threading.Tasks;
 
 namespace ApiDog.Api.Controllers
 {
@@ -7,10 +11,17 @@ namespace ApiDog.Api.Controllers
     [Route("[controller]")]
     public class DogController : ControllerBase
     {
-        [HttpGet("DogGenerate")]
-        public IActionResult GetDog()
+        private readonly IDogService _dogApi;
+        public DogController()
         {
-            return Ok("cachorro");
+            _dogApi = RestClient.For<IDogService>("https://dog.ceo/api/");
+        }
+
+        [HttpGet("DogGenerate")]
+        public async Task<ActionResult<DogResponse>> GetDog()
+        {
+            DogResponse response = await _dogApi.GetRandomDog();
+            return Ok(response);
         }
     }
 }
